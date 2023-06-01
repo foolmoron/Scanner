@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scanner</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .container {
+            font-size: 2rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/barcodes/JsBarcode.code128.min.js"></script>
+    <script defer src="./firebase.js"></script>
+    <script defer src="./ticket.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <label>Ticket: <b class="ticket-id"></b></label>
+        <div class="ticket-data"></div>
+        <svg id="barcode"></svg>
+    </div>
+</body>
+
+</html>

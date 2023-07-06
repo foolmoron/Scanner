@@ -18,6 +18,10 @@
         .container button {
             font-size: 2rem;
         }
+
+        .container textarea {
+            font-size: 1.5rem;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -30,6 +34,7 @@
 <body>
     <form class="container" onsubmit="onSubmit(event)">
         <input type="text" name="name" placeholder="Enter Name" required />
+        <textarea name="cursedComputerPrompt" cols="32" rows="6" maxlength="154" placeholder="Enter Prompt" required></textarea>
         <button>Get Barcode</button>
     </form>
 </body>

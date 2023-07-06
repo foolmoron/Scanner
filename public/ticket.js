@@ -12,6 +12,7 @@ async function main() {
     );
     JsBarcode('#barcode', doc.id, {
         height: 300,
+        width: 3,
     });
 }
 

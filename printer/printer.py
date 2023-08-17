@@ -9,7 +9,7 @@ cred = credentials.Certificate(os.path.expanduser('~') + "/scanner-d8c37-firebas
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-p = Usb(0x4b43, 0x3538, 0, 0x81, 0x03)
+p = Usb(0x0416, 0x5011, 0, 0x81, 0x01)
 def print_barcode(code, name):
     p.text('\n\n\n\n')
     p.barcode(code=code, function_type='B', bc='CODE128', height=128, width=2, pos="OFF")

@@ -2,6 +2,8 @@ from datetime import datetime
 import os
 import time
 from escpos.printer import Usb
+from barcode import EAN13
+from barcode.writer import ImageWriter
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -9,10 +11,18 @@ cred = credentials.Certificate(os.path.expanduser('~') + "/scanner-d8c37-firebas
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+def do_nothing(*args, **kwargs):
+    pass
+
 p = Usb(0x0416, 0x5011, 0, 0x81, 0x01)
 def print_barcode(code, name):
     p.text('\n\n\n\n')
-    p.barcode(code=code, function_type='B', bc='CODE128', height=128, width=2, pos="OFF")
+    with open("barcode.png", "wb") as f:
+        writer = ImageWriter()
+        writer.dpi = 230
+        writer._callbacks["paint_text"] = do_nothing
+        EAN13(str(code), writer=writer).write(f)
+    p.image('barcode.png')
     p.text('\nID: ')
     p.text(name)
     p.cut(mode='PART')
